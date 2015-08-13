@@ -94,6 +94,11 @@ elif [ -f /usr/lib/libc_r.so ]; then
   fi
 fi
 
+if [ -z $DESTDIR ]; then
+    DESTDIR=/usr/local
+fi
+export DESTDIR
+
 cd src
 cp Makefile.in Makefile
 perl -pi -e "s#\\\$\(CFLAGS\)#$CFLAGS#g" Makefile
