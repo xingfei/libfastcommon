@@ -438,6 +438,14 @@ char *toUppercase(char *src)
 
 void daemon_init(bool bCloseFiles)
 {
+    char *daemon;
+
+    daemon = getenv("DAEMON");
+    if (daemon != NULL && strcmp(daemon, "false") == 0)
+    {
+        return;
+    }
+
 #ifndef WIN32
 	pid_t pid;
 	int i;
